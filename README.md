@@ -24,3 +24,6 @@ In my personal experience, iPhone/iPad LiDAR (depth map) shows much better depth
 - Registration (Alignment) between color and depth images (https://developer.apple.com/forums/thread/663995)
 - Depth image resolution (256 x 192) (https://developer.apple.com/forums/thread/688791)
 - Access depth data purely from LiDAR only (https://developer.apple.com/forums/thread/653539)
+
+
+video error 발생 시 코덱 설치하기 (https://sergeswin.com/1255/)
