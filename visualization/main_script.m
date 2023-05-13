@@ -7,11 +7,10 @@ dbstop if error;
 addpath('MatlabProgressBar');
 addpath(genpath(pwd));
 
-
 %% main sciprt to parse rgb, depth, and confidence data
 
 % define dataset directory from Stray Scanner app
-datasetPath = '../rgbd_dataset_renaissance_03_corridor01';
+datasetPath = './data/opti_10/opti_10';
 process_data(datasetPath);
 
 
@@ -21,14 +20,14 @@ process_data(datasetPath);
 
 %% visualize rgb, depth, and confidence images
 
-% image index
-frameIndex = 504;
+% image index 1번부터 시작 
+frameIndex = 162;    
 
 
 % read color, depth, and confidence images
 colorImage = imread([datasetPath sprintf('/rgb/%06d.png', frameIndex)]);
-depthImage = imread([datasetPath sprintf('/depth/%06d.png', frameIndex)]);
-confImage = imread([datasetPath sprintf('/conf/%06d.png', frameIndex)]);
+depthImage = imread([datasetPath sprintf('/depth_one_index/%06d.png', frameIndex)]);
+confImage = imread([datasetPath sprintf('/confidence_one_index/%06d.png', frameIndex)]);
 
 
 % 1) plot color, depth, and confidence image
@@ -59,7 +58,7 @@ alpha_data = checkerboard(block_size, P, Q) > 0;
 alpha_data = alpha_data(1:M, 1:N);
 set(h, 'AlphaData', alpha_data);
 
-
+confImage == 0
 % 3) plot 3D point cloud with color, depth images
 load([datasetPath '/camera_matrix.mat']);
 depthImage(confImage == 0) = 0;
@@ -91,13 +90,3 @@ plot_inertial_frame(0.5); xlabel('X [m]'); ylabel('Y [m]'); zlabel('Z [m]');
 
 % figure options
 f = FigureRotator(gca());
-
-
-
-
-
-
-
-
-
-
